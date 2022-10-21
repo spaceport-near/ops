@@ -13,7 +13,6 @@ module "organization" {
   admins = [
     "inc4-deployer",
     "valar999",
-    "ozhadaie",
     "segovchik",
     "olehbandrivskyi",
     "kuroneko-ua",
