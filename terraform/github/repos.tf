@@ -24,12 +24,12 @@ module "frontend" {
   allow_squash_merge  = true
 }
 
-module "backend"
+module "backend" {
   source  = "mineiros-io/repository/github"
   version = "~> 0.16.2"
 
   name                = "backend"
-  description         = "backend repo"
+  description         = "Docking/undocking repo"
   visibility          = "private"
   auto_init           = false
   has_issues          = true

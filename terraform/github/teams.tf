@@ -50,7 +50,7 @@ module "backend_admins" {
     "valar999"
   ]
   
-    admin_repositories = [
-    module.frontend.repository.name
-  ]
+  admin_repositories = [
+    module.backend.repository.name
+  ] 
 }
