@@ -23,3 +23,16 @@ module "frontend" {
   issue_labels_create = false
   allow_squash_merge  = true
 }
+
+module "backend"
+  source  = "mineiros-io/repository/github"
+  version = "~> 0.16.2"
+
+  name                = "backend"
+  description         = "backend repo"
+  visibility          = "private"
+  auto_init           = false
+  has_issues          = true
+  issue_labels_create = false
+  allow_squash_merge  = true
+}
