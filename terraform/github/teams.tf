@@ -49,4 +49,8 @@ module "backend_admins" {
     "mephistopheles1010",
     "valar999"
   ]
+  
+    admin_repositories = [
+    module.frontend.repository.name
+  ]
 }
