@@ -4,7 +4,7 @@ module "ops" {
 
   name                = "ops"
   description         = "Devops repo"
-  visibility          = "private"
+  visibility          = "public"
   auto_init           = false
   has_issues          = true
   issue_labels_create = false
@@ -17,7 +17,7 @@ module "frontend" {
 
   name                = "frontend"
   description         = "Frontend repo"
-  visibility          = "private"
+  visibility          = "public"
   auto_init           = false
   has_issues          = true
   issue_labels_create = false
@@ -30,7 +30,7 @@ module "backend" {
 
   name                = "backend"
   description         = "Docking/undocking repo"
-  visibility          = "private"
+  visibility          = "public"
   auto_init           = false
   has_issues          = true
   issue_labels_create = false
