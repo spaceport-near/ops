@@ -1,7 +1,7 @@
 resource "digitalocean_kubernetes_cluster" "spaceport" {
   name         = "spaceport"
   region       = "nyc1"
-  version      = "1.22.12-do.0"
+  version      = "1.24.4-do.0"
   auto_upgrade = false
   ha           = true
 
