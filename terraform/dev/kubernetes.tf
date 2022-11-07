@@ -8,7 +8,7 @@ resource "digitalocean_kubernetes_cluster" "spaceport" {
   node_pool {
     name       = "default-pool"
     size       = "s-4vcpu-8gb"
-    node_count = 3
+    node_count = 2
   }
 }
 
