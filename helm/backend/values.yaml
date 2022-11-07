@@ -1,7 +1,7 @@
 replicaCount: 1
 
 imageSpaceport:
-  repository: ghcr.io/olehbandrivskyi/spaceport-backend
+  repository: ghcr.io/spaceport-near/backend
   tag: "develop"
   pullPolicy: Always
 
