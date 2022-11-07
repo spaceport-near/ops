@@ -1,0 +1,111 @@
+replicaCount: 1
+
+imageSpaceport:
+  repository: ghcr.io/olehbandrivskyi/spaceport-backend
+  tag: "develop"
+  pullPolicy: Always
+
+imageSpaceportPullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: LoadBalancer
+  port: 8877
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+backend:
+  env:
+    NODE_ENV: development
+    # NEAR
+    NEAR_NETWORK_ID: testnet
+    NEAR_NODE_URL: https://rpc.testnet.near.org
+    NEAR_WALLET_URL: https://wallet.testnet.near.org
+    NEAR_HELPER_URL: https://helper.testnet.near.org
+    NEAR_EXPLORER_URL: https://explorer.testnet.near.org
+    NEAR_WALLET_API_ORIGIN: https://testnet-api.kitwallet.app
+
+    # CORS
+    # NOTE: for all use ONE space separator
+    CORS_ALLOWED_ORIGINS: "http://127.0.0.1 https://127.0.0.1 https://127.0.0.1 http://localhost https://localhost"
+
+    # mongodb
+    MONGODB_URL: ""
+    # MONGODB_SSL_ENABLE: true
+
+    # auth
+    GOOGLE_AUTH_CLIENT_ID: ""
+
+    # server
+    SERVER_PORT: 8877
+
+    # logger
+    LOGGER_TRANSPORT_CONSOLE_LEVEL: debug
+    LOGGER_HOST_NAME: 127.0.0.1
+    LOGGER_SERVICE_NAME: spaceport-api
+  envSensitive:
+    MONGODB_USER: mongodb_user
+    MONGODB_PASS: mongodb_pass
+
+  # !!! Test DB. Move to terraform
+  secrets:
+    mongodb_user: ""
+    mongodb_pass: ""
