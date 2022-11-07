@@ -105,7 +105,6 @@ backend:
     MONGODB_USER: mongodb_user
     MONGODB_PASS: mongodb_pass
 
-  # !!! Test DB. Move to terraform
   secrets:
     mongodb_user: ""
     mongodb_pass: ""
