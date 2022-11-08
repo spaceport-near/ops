@@ -26,7 +26,7 @@ resource "mongodbatlas_project" "spaceport" {
 
 resource "mongodbatlas_project_ip_access_list" "backend" {
   project_id = mongodbatlas_project.spaceport.id
-  ip_address = "0.0.0.0/0"
+  cidr_block = "0.0.0.0/0"
   comment    = "ip address for backend access"
 }
 
