@@ -1,7 +1,7 @@
 locals {
   monitoring = {
     grafana      = "prometheus-grafana"
-    prometheus   = "prometheus-kube-prometheus-prometheus"
+   # prometheus   = "prometheus-kube-prometheus-prometheus"
     alertmanager = "prometheus-kube-prometheus-alertmanager"
   }
   oauth2_proxy = {
@@ -57,7 +57,6 @@ resource "cloudflare_record" "monitoring" {
   type    = "A"
   ttl     = 1
   proxied = true
-
 }
 
 resource "helm_release" "prometheus_stack" {
