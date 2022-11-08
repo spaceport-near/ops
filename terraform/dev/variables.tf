@@ -1,13 +1,29 @@
 variable "backend_mongo_user" {
-  description = "Backend Mongo DB user"
+  description = "Backend MongoDB user"
+  type        = string
+}
+
+variable "backend_mongo_password" {
+  description = "Backend MongoDB password"
   type        = string
   sensitive   = true
 }
 
-variable "backend_mongo_password" {
-  description = "Backend Mongo DB password"
+variable "mongodbatlas_project_name" {
+  description = "MongoDB Atlas project name"
   type        = string
-  sensitive   = true
+  value       = "spaceport"
+}
+
+variable "monogodbatlas_instance_name" {
+  description = "MongoDB Atlas instance name"
+  type        = string
+  value       = "dev"
+}
+
+variable "mongodbatlas_org_id" {
+  description = "MongoDBatlas organization id"
+  type        = string
 }
 
 variable "grafana_password" {
