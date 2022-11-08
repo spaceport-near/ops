@@ -55,7 +55,7 @@ resource "kubernetes_ingress_v1" "nginx" {
   wait_for_load_balancer = true
   metadata {
     name      = "ingress-nginx"
-    namespace = "monitoring"
+    namespace = "default"
   }
   spec {
     ingress_class_name = "nginx"
