@@ -1,3 +1,9 @@
+variable "backend_url" {
+  description = "Backend default url"
+  type        = string
+  default     = "backend.launchspaceport.io"
+}
+
 variable "backend_mongo_user" {
   description = "Backend MongoDB user"
   type        = string
