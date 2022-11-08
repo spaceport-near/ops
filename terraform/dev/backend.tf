@@ -9,6 +9,14 @@ resource "helm_release" "backend" {
   name  = "spaceport"
   chart = "../../helm/backend"
 
+  # spaceport image version
+  set {
+    name  = "backend.imageSpaceport.tag"
+    type  = "string"
+    value = "develop"
+  }
+  
+  # mongodb config
   set {
     name  = "backend.env.MONGODB_URL"
     type  = "string"
