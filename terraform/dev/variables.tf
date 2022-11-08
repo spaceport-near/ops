@@ -12,13 +12,13 @@ variable "backend_mongo_password" {
 variable "mongodbatlas_project_name" {
   description = "MongoDB Atlas project name"
   type        = string
-  value       = "spaceport"
+  default     = "spaceport"
 }
 
 variable "monogodbatlas_instance_name" {
   description = "MongoDB Atlas instance name"
   type        = string
-  value       = "dev"
+  default     = "dev"
 }
 
 variable "mongodbatlas_org_id" {
