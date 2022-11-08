@@ -5,7 +5,7 @@ data "cloudflare_zone" "launchspaceport_io" {
 resource "cloudflare_record" "backend" {
   zone_id = data.cloudflare_zone.launchspaceport_io.id
   name    = "backend"
-  value   = "178.128.133.63"
+  value   = "134.209.128.18"
   type    = "A"
   proxied = true
   ttl     = 1
