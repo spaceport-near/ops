@@ -1,0 +1,59 @@
+grafana:
+  ingress:
+    enabled: true
+    hosts:
+      - ${grafana_url}
+    ingressClassName: nginx
+  grafana.ini:
+    server:
+      root_url: https://${grafana_url}
+    auth.github:
+      enabled: true
+      allow_sign_up: true
+      client_id: ${grafana_client_id}
+      client_secret: ${grafana_client_secret}
+      scopes: user:email,read:org
+      auth_url: https://github.com/login/oauth/authorize
+      token_url: https://github.com/login/oauth/access_token
+      api_url: https://api.github.com/user
+      allowed_organizations: spaceport-near
+    feature_toggles:
+      publicDashboards: true
+  persistence:
+    enabled: true
+    storageClassName: do-block-storage
+    size: 10Gi
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      folder: /tmp/dashboards
+      provider:
+        foldersFromFilesStructure: true
+      annotations:
+        k8s-sidecar-target-directory: "/tmp/dashboards/kubernetes"
+
+prometheus:
+  ingress:
+    enabled: true
+    hosts:
+      - ${prometheus_url}
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+
+alertmanager:
+  ingress:
+    enabled: true
+    hosts:
+      - ${alertmanager_url}
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+      nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"

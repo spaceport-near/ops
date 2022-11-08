@@ -1,0 +1,10 @@
+configFile: |-
+  email_domains = [ "*" ]
+ingress:
+  enabled: true
+  path: /oauth2
+  ingressClassName: nginx
+  hosts:
+    - ${host_url}
+  annotations:
+    kubernetes.io/ingress.class: nginx
