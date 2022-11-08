@@ -1,8 +1,8 @@
 locals {
   monitoring = {
-    grafana      = "prometheus-grafana"
+   # grafana      = "prometheus-grafana"
    # prometheus   = "prometheus-kube-prometheus-prometheus"
-    alertmanager = "prometheus-kube-prometheus-alertmanager"
+   # alertmanager = "prometheus-kube-prometheus-alertmanager"
   }
   oauth2_proxy = {
     prometheus = {
