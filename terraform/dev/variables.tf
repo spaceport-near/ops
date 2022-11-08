@@ -14,6 +14,17 @@ variable "backend_mongo_password" {
   type        = string
   sensitive   = true
 }
+variable "mephistopheles_mongo_user" {
+  description = "Mephistopheles MongoDB user"
+  type        = string
+  default     = "mephistopheles"
+}
+
+variable "mephistopheles_mongo_password" {
+  description = "Mephistopheles MongoDB password"
+  type        = string
+  sensitive   = true
+}
 
 variable "mongodbatlas_project_name" {
   description = "MongoDB Atlas project name"
