@@ -42,10 +42,15 @@ prometheus:
     annotations:
       nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
       nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
-  persistence:
-    enabled: true
-    storageClassName: do-block-storage
-    size: 10Gi
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: do-block-storage
 
 alertmanager:
   ingress:
