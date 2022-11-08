@@ -48,25 +48,24 @@ data "kubernetes_ingress_v1" "monitoring" {
   }
 }
 
-resource "cloudflare_record" "monitoring" {
-  for_each = local.monitoring
+# resource "cloudflare_record" "monitoring" {
+#   for_each = local.monitoring
 
-  zone_id = data.cloudflare_zone.launchspaceport_io.id
-  name    = each.key
-  value   = data.kubernetes_ingress_v1.monitoring[(each.key)].status.0.load_balancer.0.ingress.0.ip
-  type    = "A"
-  ttl     = 1
-  proxied = true
+#   zone_id = data.cloudflare_zone.launchspaceport_io.id
+#   name    = each.key
+#   value   = data.kubernetes_ingress_v1.monitoring[(each.key)].status.0.load_balancer.0.ingress.0.ip
+#   type    = "A"
+#   ttl     = 1
+#   proxied = true
 
-  depends_on = [helm_release.prometheus_stack, helm_release.loki_stack]
-}
+#   depends_on = [helm_release.prometheus_stack, helm_release.loki_stack]
+# }
 
 resource "helm_release" "prometheus_stack" {
   name       = "prometheus"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
-  version    = "39.11.0"
-  timeout    = 600
+  version    = "41.7.3"
   namespace  = var.monitoring_namespace
 
   set {
