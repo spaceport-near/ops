@@ -57,6 +57,8 @@ resource "cloudflare_record" "monitoring" {
   type    = "A"
   ttl     = 1
   proxied = true
+
+  depends_on = [helm_release.prometheus_stack, helm_release.loki_stack]
 }
 
 resource "helm_release" "prometheus_stack" {
