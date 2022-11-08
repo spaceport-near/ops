@@ -34,7 +34,7 @@ resource "kubernetes_config_map" "grafana_dashboards" {
     }
 
     annotations = {
-      k8s-sidecar-target-directory = "/tmp/dashboards/Spaceport"
+      k8s-sidecar-target-directory = "/tmp/dashboards/spaceport"
     }
   }
 }
