@@ -30,3 +30,9 @@ provider "helm" {
     cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.spaceport.kube_config[0].cluster_ca_certificate)
   }
 }
+
+resource "helm_release" "nginx" {
+  name       = "nginx-controller"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  chart      = "ingress-nginx"
+}
