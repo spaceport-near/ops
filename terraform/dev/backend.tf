@@ -16,6 +16,19 @@ resource "helm_release" "backend" {
     value = "develop"
   }
   
+  # ENV variables
+  set {
+    name  = "backend.env.NODE_ENV"
+    type  = "string"
+    value = "development"
+  }
+
+  set {
+    name  = "backend.env.CORS_ALLOWED_ORIGINS"
+    type  = "string"
+    value = "https://app.launchspaceport.io http://localhost:3000 http://127.0.0.1 https://127.0.0.1 https://127.0.0.1 http://localhost https://localhost"
+  }
+
   # mongodb config
   set {
     name  = "backend.env.MONGODB_URL"
