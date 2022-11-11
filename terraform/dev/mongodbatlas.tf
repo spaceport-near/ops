@@ -44,6 +44,6 @@ resource "mongodbatlas_database_user" "mephistopheles" {
 
   roles {
     role_name     = "readWrite"
-    database_name = "admin"
+    database_name = "test"
   }
 }
